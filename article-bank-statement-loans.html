@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Statement Loans Explained Plainly | FreelancerMortgage.guide</title>
+<meta name="description" content="An alternative mortgage path for freelancers who can't show traditional income documentation. How bank statement loans work, who genuinely qualifies, and what the real cost is.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f0a;
+    --surface: #111611;
+    --surface2: #161e16;
+    --border: #1e281e;
+    --border-mid: #28362a;
+    --text: #d8edd8;
+    --text-muted: #7a9a7a;
+    --text-dim: #3a4e3a;
+    --accent: #4dbb6a;
+    --accent-dim: #0a1e0e;
+    --accent-mid: #143018;
+    --gold: #c8a840;
+    --gold-dim: #1e1808;
+    --red: #e07070;
+    --red-dim: #200a0a;
+    --blue: #60a8d8;
+    --blue-dim: #081420;
+    --col-width: 680px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.72;
+  }
+
+  /* Scanline effect */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,15,10,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-cta { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid var(--accent-mid); padding: 6px 14px; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent-dim); }
+
+  /* ── Hero ── */
+  .article-hero {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    padding: 80px 32px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-meta { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-mid); padding: 4px 10px; }
+  .hero-read-time { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+
+  .article-title { font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 54px); line-height: 1.08; letter-spacing: -0.03em; color: var(--text); max-width: 780px; margin-bottom: 24px; font-weight: 800; }
+  .article-title em { font-style: italic; color: var(--accent); }
+
+  .article-deck { font-size: 18px; color: var(--text-muted); max-width: 580px; line-height: 1.65; margin-bottom: 36px; }
+  .hero-byline { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.06em; }
+
+  /* ── Layout ── */
+  .article-layout { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 220px 1fr; gap: 80px; align-items: start; }
+
+  .toc { position: sticky; top: 72px; padding: 40px 0; }
+  .toc-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+  .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .toc-list a { display: block; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); text-decoration: none; padding: 6px 0 6px 12px; border-left: 1px solid var(--border); transition: color 0.15s, border-color 0.15s; line-height: 1.4; }
+  .toc-list a:hover { color: var(--text); border-left-color: var(--accent); }
+
+  /* ── Body ── */
+  .article-body { padding: 48px 0 100px; max-width: var(--col-width); }
+
+  .article-lede { font-size: 20px; line-height: 1.65; color: var(--text); margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+  .article-body p { margin-bottom: 24px; color: var(--text-muted); }
+  .article-body p strong { color: var(--text); font-weight: 600; }
+
+  .article-body h2 { font-family: 'Syne', sans-serif; font-size: 24px; line-height: 1.2; color: var(--text); margin: 56px 0 18px; font-weight: 800; letter-spacing: -0.02em; }
+
+  /* Pull quote */
+  .pull-quote { border-left: 3px solid var(--accent); padding: 4px 0 4px 24px; margin: 40px 0; }
+  .pull-quote p { font-family: 'Syne', sans-serif; font-size: 21px; line-height: 1.35; color: var(--text); margin-bottom: 0 !important; font-weight: 700; }
+
+  /* Callouts */
+  .callout { border: 1px solid var(--border); padding: 22px 26px; margin: 36px 0; }
+  .callout-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+  .callout.warning { background: var(--gold-dim); border-color: #3a2a10; }
+  .callout.warning .callout-label { color: var(--gold); }
+  .callout.tip { background: var(--accent-dim); border-color: var(--accent-mid); }
+  .callout.tip .callout-label { color: var(--accent); }
+  .callout.critical { background: var(--red-dim); border-color: #3a1a1a; }
+  .callout.critical .callout-label { color: var(--red); }
+  .callout.info { background: var(--blue-dim); border-color: #102030; }
+  .callout.info .callout-label { color: var(--blue); }
+  .callout p { font-size: 15px; margin-bottom: 0 !important; color: var(--text-muted); line-height: 1.65; }
+  .callout p + p { margin-top: 10px !important; }
+
+  /* ── How it works visual ── */
+  .how-it-works { margin: 40px 0; }
+
+  .hiw-row {
+    display: grid; grid-template-columns: 36px 1fr;
+    gap: 0; border: 1px solid var(--border);
+    margin-bottom: -1px; background: var(--surface);
+    transition: background 0.15s;
+  }
+  .hiw-row:hover { background: var(--surface2); }
+
+  .hiw-num {
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--accent); border-right: 1px solid var(--border);
+    writing-mode: vertical-rl; letter-spacing: 0.1em;
+  }
+
+  .hiw-body { padding: 18px 20px; }
+  .hiw-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .hiw-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+  /* ── Cost comparison ── */
+  .cost-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+  .cost-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); padding: 12px 18px; text-align: left; background: var(--surface2); border-bottom: 1px solid var(--border-mid); font-weight: 500; }
+  .cost-table td { padding: 13px 18px; border-bottom: 1px solid var(--border); color: var(--text-muted); line-height: 1.5; font-size: 14px; }
+  .cost-table tr:last-child td { border-bottom: none; }
+  .cost-table .td-metric { color: var(--text); font-weight: 600; }
+  .cost-table .td-conv { color: var(--accent); font-family: 'DM Mono', monospace; font-size: 13px; }
+  .cost-table .td-bsl { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 13px; }
+  .cost-table .td-note { font-size: 12px; color: var(--text-dim); font-style: italic; }
+
+  /* ── Real cost calculator ── */
+  .cost-box {
+    background: var(--surface); border: 1px solid var(--border-mid);
+    padding: 28px; margin: 40px 0;
+  }
+
+  .cost-box-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 20px; }
+
+  .cost-line { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 12px; font-size: 14px; }
+  .cost-line:last-child { border-bottom: none; }
+  .cost-desc { color: var(--text-muted); }
+  .cost-val { font-family: 'DM Mono', monospace; white-space: nowrap; }
+  .cost-val.neutral { color: var(--text); }
+  .cost-val.bad { color: var(--red); }
+  .cost-val.good { color: var(--accent); }
+  .cost-val.total { color: var(--gold); font-size: 16px; }
+
+  /* ── Who qualifies grid ── */
+  .qualify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-mid); margin: 36px 0; }
+
+  .qualify-panel { background: var(--surface); padding: 24px; }
+
+  .qualify-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+  .qualify-label.yes { color: var(--accent); }
+  .qualify-label.no { color: var(--red); }
+
+  .qualify-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .qualify-list li { font-size: 14px; color: var(--text-muted); padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; line-height: 1.45; }
+  .qualify-list li:last-child { border-bottom: none; }
+  .qualify-list.yes li::before { content: '✓'; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+  .qualify-list.no li::before { content: '✗'; color: var(--red); font-family: 'DM Mono', monospace; font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+
+  /* task list */
+  .task-list { list-style: none; margin: 16px 0 24px; }
+  .task-list li { font-size: 15px; color: var(--text-muted); padding: 9px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; }
+  .task-list li:last-child { border-bottom: none; }
+  .task-list li::before { content: '→'; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+
+  /* Tool CTA */
+  .tool-cta { background: var(--accent-dim); border: 1px solid var(--accent-mid); padding: 32px; margin: 48px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .tool-cta-title { font-family: 'Syne', sans-serif; font-size: 20px; color: var(--text); margin-bottom: 6px; font-weight: 800; }
+  .tool-cta-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 0 !important; }
+  .tool-cta-btn { background: var(--accent); color: #0a0f0a; font-family: 'Instrument Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 12px 24px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: opacity 0.2s; }
+  .tool-cta-btn:hover { opacity: 0.88; }
+
+  /* Related */
+  .related { border-top: 1px solid var(--border); margin-top: 80px; padding-top: 48px; }
+  .related-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 24px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); }
+  .related-card { background: var(--bg); padding: 24px; text-decoration: none; transition: background 0.2s; display: block; }
+  .related-card:hover { background: var(--surface); }
+  .related-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
+  .related-title { font-family: 'Syne', sans-serif; font-size: 16px; color: var(--text); line-height: 1.3; font-weight: 700; }
+
+  footer { border-top: 1px solid var(--border); position: relative; z-index: 1; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-note { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.05em; }
+
+  @media (max-width: 800px) {
+    .article-layout { grid-template-columns: 1fr; gap: 0; }
+    .toc { display: none; }
+    .article-hero, .article-layout { padding-left: 20px; padding-right: 20px; }
+    .related-grid, .qualify-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">Freelancer<span>Mortgage</span>.guide</a>
+    <a class="nav-cta" href="/">Take the readiness quiz →</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="hero-meta">
+    <span class="hero-tag">Loan Types</span>
+    <span class="hero-read-time">10 min read</span>
+  </div>
+  <h1 class="article-title">Bank Statement Loans <em>Explained Plainly</em></h1>
+  <p class="article-deck">An alternative mortgage path for freelancers who can't qualify on tax returns alone. How they work, who genuinely qualifies, what they actually cost — and when they make sense.</p>
+  <div class="hero-byline">FreelancerMortgage.guide &nbsp;·&nbsp; Updated 2025</div>
+</header>
+
+<div class="article-layout">
+  <aside class="toc">
+    <div class="toc-label">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#what-is-it">What is a bank statement loan?</a></li>
+      <li><a href="#how-it-works">How income is calculated</a></li>
+      <li><a href="#who-qualifies">Who actually qualifies</a></li>
+      <li><a href="#real-cost">The real cost</a></li>
+      <li><a href="#when-it-makes-sense">When it makes sense</a></li>
+      <li><a href="#when-it-doesnt">When it doesn't</a></li>
+      <li><a href="#alternatives">Alternatives to consider</a></li>
+      <li><a href="#questions-to-ask">Questions to ask lenders</a></li>
+    </ul>
+  </aside>
+
+  <article class="article-body">
+
+    <p class="article-lede">Bank statement loans exist because millions of self-employed people earn real money, run real businesses, and can genuinely afford a mortgage — but can't prove it the way a traditional lender requires. If you're one of them, this loan type is worth understanding clearly, without the sales pitch that usually surrounds it.</p>
+
+    <p>The short version: bank statement loans use your actual deposits to calculate income, bypassing the tax return problem entirely. They're more accessible than conventional loans for many freelancers. They're also more expensive. How much more expensive matters a great deal.</p>
+
+    <h2 id="what-is-it">What is a bank statement loan?</h2>
+
+    <p>A bank statement loan — also called a non-QM loan (non-qualified mortgage) or a self-employed mortgage — is a home loan where the lender qualifies you based on your bank deposits rather than your filed tax returns.</p>
+
+    <p>For most conventional mortgages, the income calculation starts with your Schedule C net profit (after deductions) and works downward from there. The result, for heavily deducting freelancers, is a qualifying income significantly lower than their actual cash flow.</p>
+
+    <p>Bank statement loans flip this. Instead of asking what you reported to the IRS, the lender asks: <strong>how much money actually came into your account?</strong> That number — adjusted for an estimated expense ratio — becomes the qualifying income.</p>
+
+    <div class="pull-quote">
+      <p>"Bank statement loans solve a real problem. They also cost real money. The question isn't whether they work — it's whether the premium is worth it for your specific situation."</p>
+    </div>
+
+    <p>These loans are offered by specialist lenders — not the big retail banks. They're a genuinely useful product for the right borrower, and a poor choice for the wrong one. The marketing around them tends to obscure that distinction.</p>
+
+    <h2 id="how-it-works">How income is calculated</h2>
+
+    <p>The mechanics vary by lender, but the core approach is consistent: the lender reviews 12 or 24 months of bank statements, totals the deposits, applies an expense factor, and arrives at a qualifying income.</p>
+
+    <div class="how-it-works">
+      <div class="hiw-row">
+        <div class="hiw-num">01</div>
+        <div class="hiw-body">
+          <div class="hiw-title">Provide 12 or 24 months of bank statements</div>
+          <div class="hiw-desc">Personal, business, or both — depending on the lender. Business statements are typically preferred as they show income separately from personal finances. Some lenders require both.</div>
+        </div>
+      </div>
+      <div class="hiw-row">
+        <div class="hiw-num">02</div>
+        <div class="hiw-body">
+          <div class="hiw-title">Lender totals all qualifying deposits</div>
+          <div class="hiw-desc">The lender adds up all deposits over the period. Transfers between your own accounts are excluded. Large one-time deposits (from asset sales, loans) are flagged and may be excluded. Consistency matters — irregular months invite scrutiny.</div>
+        </div>
+      </div>
+      <div class="hiw-row">
+        <div class="hiw-num">03</div>
+        <div class="hiw-body">
+          <div class="hiw-title">Apply an expense ratio</div>
+          <div class="hiw-desc">Lenders don't assume all deposits are profit. They apply an assumed expense factor — typically 50% for personal statements, or 10–50% for business statements depending on the industry. The remaining percentage is treated as qualifying income. This is where the numbers often land lower than expected.</div>
+        </div>
+      </div>
+      <div class="hiw-row">
+        <div class="hiw-num">04</div>
+        <div class="hiw-body">
+          <div class="hiw-title">Divide by months to get monthly qualifying income</div>
+          <div class="hiw-desc">Total deposits × (1 − expense ratio) ÷ number of months = monthly qualifying income. This figure is then used like any other qualifying income to calculate the maximum mortgage payment.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-label">Example calculation</div>
+      <p>24 months of business bank statements show $240,000 in total deposits. The lender applies a 40% expense ratio (standard for a service business). Qualifying income = $240,000 × 60% = $144,000 over 2 years, or $6,000/month. Compare this to what a conventional lender might calculate from the same person's Schedule C net profit after deductions — often $3,500–$4,500/month for a freelancer with moderate write-offs.</p>
+    </div>
+
+    <h2 id="who-qualifies">Who actually qualifies</h2>
+
+    <p>Bank statement loans have real requirements. They're more accessible than conventional loans for self-employed borrowers, but "more accessible" doesn't mean easy.</p>
+
+    <div class="qualify-grid">
+      <div class="qualify-panel">
+        <div class="qualify-label yes">Typically qualifies</div>
+        <ul class="qualify-list yes">
+          <li>Self-employed 12+ months with strong, consistent deposits</li>
+          <li>Credit score 680 or above (some lenders accept 660)</li>
+          <li>10–20% down payment available</li>
+          <li>Sufficient cash reserves (typically 3–12 months mortgage payments)</li>
+          <li>Business and personal accounts clearly separated</li>
+          <li>Consistent monthly deposits with no large unexplained gaps</li>
+        </ul>
+      </div>
+      <div class="qualify-panel">
+        <div class="qualify-label no">Typically doesn't qualify</div>
+        <ul class="qualify-list no">
+          <li>Less than 12 months self-employment history</li>
+          <li>Credit score below 640</li>
+          <li>Less than 10% down payment</li>
+          <li>Irregular or declining deposits month to month</li>
+          <li>Mixed personal and business accounts</li>
+          <li>Recent bankruptcies or foreclosures (within 2–4 years)</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>The credit score requirement is particularly worth noting. Bank statement loans are sometimes marketed as a solution for borrowers with credit problems. In practice, most reputable bank statement lenders still want 660–680 minimum. Below that, you're looking at hard money loans or other products with significantly worse terms.</p>
+
+    <h2 id="real-cost">The real cost — what nobody volunteers upfront</h2>
+
+    <p>This is the section most banks statement loan explainers skip or minimise. The cost premium on bank statement loans is real and significant. It needs to be factored into any decision.</p>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Conventional loan</th>
+          <th>Bank statement loan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-metric">Interest rate premium</td>
+          <td class="td-conv">Baseline</td>
+          <td class="td-bsl">+0.5% to +2.0% above conventional</td>
+        </tr>
+        <tr>
+          <td class="td-metric">Minimum down payment</td>
+          <td class="td-conv">3–5% (with PMI)</td>
+          <td class="td-bsl">10–20% typically required</td>
+        </tr>
+        <tr>
+          <td class="td-metric">Origination fees</td>
+          <td class="td-conv">0.5–1%</td>
+          <td class="td-bsl">1–3% of loan amount</td>
+        </tr>
+        <tr>
+          <td class="td-metric">Secondary market</td>
+          <td class="td-conv">Fannie/Freddie backed</td>
+          <td class="td-bsl">Non-QM, portfolio held</td>
+        </tr>
+        <tr>
+          <td class="td-metric">Prepayment penalty</td>
+          <td class="td-conv">Rarely</td>
+          <td class="td-bsl">Sometimes — check carefully</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The rate premium is the number that matters most. Even a 1% higher rate has a substantial effect over the life of a loan:</p>
+
+    <div class="cost-box">
+      <div class="cost-box-label">Real cost of a 1% rate premium — $450,000 loan, 30-year term</div>
+      <div class="cost-line">
+        <span class="cost-desc">Conventional loan at 6.8%</span>
+        <span class="cost-val neutral">$2,945/month</span>
+      </div>
+      <div class="cost-line">
+        <span class="cost-desc">Bank statement loan at 7.8%</span>
+        <span class="cost-val bad">$3,230/month</span>
+      </div>
+      <div class="cost-line">
+        <span class="cost-desc">Monthly difference</span>
+        <span class="cost-val bad">+ $285/month</span>
+      </div>
+      <div class="cost-line">
+        <span class="cost-desc">Annual difference</span>
+        <span class="cost-val bad">+ $3,420/year</span>
+      </div>
+      <div class="cost-line">
+        <span class="cost-desc">10-year cost premium (before refinancing)</span>
+        <span class="cost-val total">+ $34,200</span>
+      </div>
+    </div>
+
+    <p>That's before accounting for higher origination fees on the bank statement loan. On a $450,000 loan, 2% origination is $9,000 at close. The total 10-year premium could easily exceed $43,000.</p>
+
+    <div class="callout warning">
+      <div class="callout-label">The refinancing plan</div>
+      <p>Many bank statement loan borrowers intend to refinance into a conventional loan once they have two years of strong tax returns. This is a legitimate strategy — but it depends on rates being favourable when you're ready to refinance, and on your qualifying income being strong enough at that point.</p>
+      <p>Factor in refinancing costs (typically 2–3% of the loan balance) when modelling this path. And don't assume rates will be lower than they are today.</p>
+    </div>
+
+    <h2 id="when-it-makes-sense">When a bank statement loan genuinely makes sense</h2>
+
+    <p>The premium is real — but so is the problem it solves. There are situations where a bank statement loan is clearly the right choice:</p>
+
+    <ul class="task-list">
+      <li><strong>Your tax returns significantly understate your ability to pay.</strong> If you earn $150,000 in gross revenue, deduct heavily, and a conventional lender will only count $60,000 as qualifying income — but you have $140,000 flowing through your accounts — a bank statement loan is likely to reflect your actual situation more accurately.</li>
+      <li><strong>You have strong, consistent deposits and good credit.</strong> Bank statement loans work best when the income picture in your bank statements is clear and stable. Inconsistent or declining deposits make the case harder to underwrite even with this product.</li>
+      <li><strong>The property you want won't wait.</strong> If you're in a competitive market and the right property is available now, buying with a bank statement loan and refinancing later may be more rational than waiting 12–24 months to build a qualifying tax return history.</li>
+      <li><strong>You plan to refinance within 2–5 years.</strong> If your income is growing and your tax profile will improve, paying the premium for a defined window is a quantifiable cost. Run the numbers explicitly.</li>
+    </ul>
+
+    <h2 id="when-it-doesnt">When it doesn't make sense</h2>
+
+    <ul class="task-list">
+      <li><strong>When you're close to qualifying conventionally.</strong> If a modest reduction in deductions over one filing cycle would bring you into conventional qualification, the tax cost is almost certainly less than the bank statement loan premium.</li>
+      <li><strong>When your deposits are irregular.</strong> The bank statement calculation benefits you most when your income is consistent. Lumpy project income — big months, slow months — produces a lower qualifying income than consistent monthly deposits of the same annual total.</li>
+      <li><strong>When you're carrying it long term.</strong> If you have no realistic path to refinancing into a conventional loan, you're committing to the rate premium indefinitely. Over 20–30 years, that cost is enormous.</li>
+      <li><strong>When you haven't compared conventional options first.</strong> A specialist broker may find conventional lenders — particularly credit unions or portfolio lenders — willing to look at your file more creatively than a big bank. Don't assume bank statement is the only path without checking.</li>
+    </ul>
+
+    <h2 id="alternatives">Alternatives worth considering first</h2>
+
+    <p>Before committing to a bank statement loan, these options are worth exhausting:</p>
+
+    <ul class="task-list">
+      <li><strong>Portfolio lenders.</strong> Small banks and credit unions that keep loans on their own books aren't bound by Fannie/Freddie guidelines. Some will use common sense underwriting for strong borrowers with unusual income profiles — often at conventional rates.</li>
+      <li><strong>Fannie Mae's 12-month self-employment exception.</strong> A narrow exception that applies when a borrower recently transitioned from W-2 to self-employment in the same field, with comparable income. Hard to qualify for, but worth asking a specialist broker about.</li>
+      <li><strong>Asset depletion loans.</strong> If you have substantial savings or investment accounts, some lenders will convert those assets into an imputed monthly income. Not suitable for everyone, but useful for older freelancers with significant assets and lower current income.</li>
+      <li><strong>Strategic deduction reduction.</strong> Reduce discretionary deductions for one or two tax years, qualify conventionally, then resume your normal deduction strategy after closing. The tax cost is often less than the bank statement loan premium.</li>
+    </ul>
+
+    <h2 id="questions-to-ask">Questions to ask any bank statement lender</h2>
+
+    <p>If you do pursue a bank statement loan, ask these questions directly and get answers in writing before proceeding:</p>
+
+    <ul class="task-list">
+      <li>What expense ratio will you apply to my statements, and why? (Get this in writing before you commit.)</li>
+      <li>What is the exact rate, and how does it compare to current conventional rates?</li>
+      <li>Are there origination fees, and are they negotiable?</li>
+      <li>Is there a prepayment penalty? If so, what is the term?</li>
+      <li>Is this loan held in portfolio or sold to a secondary market?</li>
+      <li>What would I need to show to refinance into a conventional loan in the future?</li>
+      <li>How many bank statement loans did you close last year? (Filters out lenders who rarely do these.)</li>
+    </ul>
+
+    <div class="callout tip">
+      <div class="callout-label">Find a specialist broker first</div>
+      <p>Bank statement loans are offered by a relatively small number of lenders, and the terms vary significantly between them. A mortgage broker who regularly places self-employed clients will know which lenders are offering competitive terms, which have the most flexible underwriting, and how to structure your application to present the strongest case.</p>
+      <p>Don't approach a single bank statement lender directly. Get a broker to shop the market on your behalf — with one soft pull, not multiple hard inquiries.</p>
+    </div>
+
+    <div class="tool-cta">
+      <div>
+        <div class="tool-cta-title">Not sure if a bank statement loan is right for you?</div>
+        <p class="tool-cta-desc">The free readiness assessment will tell you where you stand on the factors that determine whether a conventional loan is within reach — or whether alternatives like this are worth exploring.</p>
+      </div>
+      <a class="tool-cta-btn" href="/">Take the assessment →</a>
+    </div>
+
+    <div class="related">
+      <div class="related-label">Read next</div>
+      <div class="related-grid">
+        <a class="related-card" href="#">
+          <div class="related-tag">Income</div>
+          <div class="related-title">How Lenders Actually Calculate Freelance Income</div>
+        </a>
+        <a class="related-card" href="#">
+          <div class="related-tag">Tax Strategy</div>
+          <div class="related-title">Why Writing Off Expenses Can Cost You a Mortgage</div>
+        </a>
+        <a class="related-card" href="#">
+          <div class="related-tag">Preparation</div>
+          <div class="related-title">The 12-Month Plan Before You Apply</div>
+        </a>
+      </div>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-note">Not financial advice. For informational purposes only.</span>
+    <span class="footer-note">© 2025 FreelancerMortgage.guide</span>
+  </div>
+</footer>
+
+</body>
+</html>

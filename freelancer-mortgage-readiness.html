@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelancer Mortgage Readiness — Am I Ready to Buy?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #2a2a2a;
+    --border-active: #444;
+    --text: #e8e4dc;
+    --text-muted: #7a7570;
+    --text-dim: #4a4845;
+    --accent: #d4a853;
+    --accent-dim: #3d2f12;
+    --green: #4caf7d;
+    --green-dim: #0f2e1e;
+    --amber: #e8a020;
+    --amber-dim: #2e1f08;
+    --red: #e05555;
+    --red-dim: #2e1010;
+    --progress-bg: #1e1e1e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .logo span {
+    color: var(--accent);
+  }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.65;
+    margin-bottom: 32px;
+  }
+
+  .hero-disclaimer {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-disclaimer::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--text-dim);
+  }
+
+  /* Progress bar */
+  .progress-wrap {
+    padding: 28px 0 0;
+    display: none;
+  }
+
+  .progress-wrap.visible {
+    display: block;
+  }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .progress-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .progress-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .progress-track {
+    height: 2px;
+    background: var(--progress-bg);
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+
+  /* Question area */
+  #quiz-area {
+    padding: 48px 0;
+    min-height: 400px;
+  }
+
+  .start-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #0e0e0e;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    padding: 14px 32px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .start-btn:hover { opacity: 0.88; }
+
+  /* Question card */
+  .question-card {
+    display: none;
+    animation: fadeUp 0.35s ease forwards;
+  }
+
+  .question-card.active {
+    display: block;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .q-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .q-hint {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.55;
+  }
+
+  /* Options */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 15px;
+    padding: 16px 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    line-height: 1.4;
+  }
+
+  .option-btn:hover {
+    border-color: var(--border-active);
+    background: #1c1c1c;
+  }
+
+  .option-btn.selected {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .option-key {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    min-width: 18px;
+  }
+
+  .option-btn.selected .option-key {
+    color: var(--accent);
+  }
+
+  /* Nav buttons */
+  .q-nav {
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .btn-next {
+    background: var(--accent);
+    color: #0e0e0e;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    padding: 12px 28px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.4;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  .btn-next.enabled {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .btn-next.enabled:hover { opacity: 0.88; }
+
+  .btn-back {
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 0;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .btn-back:hover { color: var(--text); }
+
+  /* Results */
+  #result-area {
+    display: none;
+    padding: 48px 0 80px;
+    animation: fadeUp 0.4s ease forwards;
+  }
+
+  .result-header {
+    margin-bottom: 40px;
+  }
+
+  .result-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .verdict-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    margin-bottom: 20px;
+  }
+
+  .verdict-badge.ready { background: var(--green-dim); color: var(--green); border: 1px solid var(--green); }
+  .verdict-badge.close { background: var(--amber-dim); color: var(--amber); border: 1px solid var(--amber); }
+  .verdict-badge.notyet { background: var(--red-dim); color: var(--red); border: 1px solid var(--red); }
+
+  .result-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .result-headline.ready { color: var(--green); }
+  .result-headline.close { color: var(--amber); }
+  .result-headline.notyet { color: var(--red); }
+
+  .result-summary {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 580px;
+    line-height: 1.7;
+    border-left: 2px solid var(--border);
+    padding-left: 20px;
+    margin-bottom: 48px;
+  }
+
+  /* Score breakdown */
+  .breakdown-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+
+  .factor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-bottom: 48px;
+  }
+
+  .factor {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .factor-name {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .factor-verdict {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+  }
+
+  .factor-verdict.good { color: var(--green); background: var(--green-dim); }
+  .factor-verdict.warn { color: var(--amber); background: var(--amber-dim); }
+  .factor-verdict.bad { color: var(--red); background: var(--red-dim); }
+
+  /* Action items */
+  .actions-section {
+    margin-bottom: 48px;
+  }
+
+  .actions-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .action-item {
+    border-left: 2px solid var(--border);
+    padding: 14px 0 14px 20px;
+    margin-bottom: 16px;
+  }
+
+  .action-item.priority {
+    border-left-color: var(--accent);
+  }
+
+  .action-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .action-text {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Restart */
+  .restart-btn {
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .restart-btn:hover { color: var(--text); border-color: var(--text-muted); }
+
+  /* Blog section */
+  .blog-section {
+    border-top: 1px solid var(--border);
+    padding: 64px 0;
+  }
+
+  .blog-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .blog-card {
+    background: var(--bg);
+    padding: 28px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+
+  .blog-card:hover { background: var(--surface); }
+
+  .blog-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .blog-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .blog-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 540px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .header-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">Freelancer<span>Mortgage</span>.guide</div>
+      <div class="badge">No lenders. No affiliates. No agenda.</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow">Free readiness assessment</div>
+    <h1>Are you actually ready<br>to <em>get a mortgage</em>?</h1>
+    <p class="hero-sub">If you're self-employed, freelance, or run your own business — lenders assess you differently. This tool gives you an honest read on where you stand, before you walk into a bank.</p>
+    <p class="hero-disclaimer">Independent. No lender relationships. No data collected.</p>
+  </section>
+
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-meta">
+      <span class="progress-label">Assessment progress</span>
+      <span class="progress-count" id="progress-count">0 / 9</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <section id="quiz-area">
+    <button class="start-btn" id="start-btn" onclick="startQuiz()">Begin Assessment →</button>
+
+    <!-- Questions rendered by JS -->
+    <div id="questions-container"></div>
+  </section>
+
+  <section id="result-area">
+    <!-- Rendered by JS -->
+  </section>
+
+</div>
+
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-label">Guides for self-employed buyers</div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-tag">Income</div>
+        <div class="blog-title">How Lenders Actually Calculate Freelance Income</div>
+        <div class="blog-desc">It's not your bank balance. It's not your invoices. Here's the exact formula most lenders use — and why it likely shows a smaller number than you expect.</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-tag">Tax Strategy</div>
+        <div class="blog-title">Why Writing Off Expenses Can Cost You a Mortgage</div>
+        <div class="blog-desc">Every dollar you deduct reduces your taxable income — and the income lenders will count. The tradeoff nobody tells you about.</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-tag">Preparation</div>
+        <div class="blog-title">The 12-Month Plan Before Applying</div>
+        <div class="blog-desc">What to do with your income, your taxes, and your paper trail in the year before you approach a lender. Specific, actionable, honest.</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-tag">Loan Types</div>
+        <div class="blog-title">Bank Statement Loans Explained Plainly</div>
+        <div class="blog-desc">An alternative for freelancers who can't show traditional income docs. How they work, who qualifies, and what the real cost is.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-note">Not financial advice. For informational purposes only.</span>
+      <span class="footer-note">© 2025 FreelancerMortgage.guide</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const questions = [
+  {
+    id: 'income_years',
+    text: 'How long have you been self-employed or freelancing full-time?',
+    hint: 'Most lenders require at least 2 years of self-employment history before they will consider your application. This is the single biggest gating factor — there is rarely a shortcut.',
+    options: [
+      { label: 'Less than 1 year', value: 0 },
+      { label: '1 to 2 years', value: 1 },
+      { label: '2 to 3 years', value: 2 },
+      { label: '3+ years', value: 3 }
+    ]
+  },
+  {
+    id: 'income_consistency',
+    text: 'How consistent has your income been over the past 2 years?',
+    hint: 'Lenders compare your income year on year. If your most recent year is significantly lower than the year before, many lenders will use the lower figure — or decline entirely.',
+    options: [
+      { label: 'Very inconsistent — big swings up and down', value: 0 },
+      { label: 'Somewhat inconsistent — noticeable variation', value: 1 },
+      { label: 'Mostly stable — similar each year', value: 2 },
+      { label: 'Growing steadily year on year', value: 3 }
+    ]
+  },
+  {
+    id: 'income_trending',
+    text: 'Is your income trending up, flat, or down compared to last year?',
+    hint: 'Trending up is fine. Trending down raises concerns even if your overall earnings are strong. Flat is generally acceptable.',
+    options: [
+      { label: 'Down more than 20%', value: 0 },
+      { label: 'Down slightly (under 20%)', value: 1 },
+      { label: 'About the same', value: 2 },
+      { label: 'Up — I\'m earning more this year', value: 3 }
+    ]
+  },
+  {
+    id: 'write_offs',
+    text: 'How aggressively do you claim business expenses against your income?',
+    hint: 'Claiming expenses reduces your taxable income — and most lenders use your net income (after expenses) to calculate what you can borrow. Every pound or dollar you deduct can reduce your borrowing power by three to four times that amount.',
+    options: [
+      { label: 'Heavily — I claim almost everything I can', value: 0 },
+      { label: 'Moderately — I claim legitimate expenses', value: 1 },
+      { label: 'Lightly — I keep claims minimal', value: 2 },
+      { label: 'I haven\'t optimised for expense claims', value: 3 }
+    ]
+  },
+  {
+    id: 'credit_score',
+    text: "What's your credit score, approximately?",
+    hint: 'Self-employed borrowers often face stricter credit requirements. A low or thin credit history makes approval harder and rates higher. If you\'re not sure, that\'s worth finding out before you apply — most credit reference agencies offer free checks.',
+    options: [
+      { label: 'Poor — I know it\'s low or I\'ve had credit problems', value: 0 },
+      { label: 'Fair — below average but not terrible', value: 1 },
+      { label: 'Good — above average', value: 2 },
+      { label: 'Excellent — I\'ve maintained a strong credit history', value: 3 },
+      { label: 'I don\'t know — I haven\'t checked recently', value: 'unknown' }
+    ]
+  },
+  {
+    id: 'deposit',
+    text: 'How much deposit do you have saved, as a percentage of the property price you have in mind?',
+    hint: 'A larger deposit reduces lender risk and opens up more options. Self-employed applicants with smaller deposits face a narrower range of products and typically higher rates.',
+    options: [
+      { label: 'Under 5%', value: 0 },
+      { label: '5% – 9%', value: 1 },
+      { label: '10% – 19%', value: 2 },
+      { label: '20% or more', value: 3 }
+    ]
+  },
+  {
+    id: 'debt',
+    text: 'How much existing debt do you carry? (loans, credit cards, car finance, student debt, etc.)',
+    hint: 'Lenders assess how much of your income is already committed to debt repayments. High existing debt reduces the mortgage size you qualify for, and self-employed applicants typically get less flexibility here.',
+    options: [
+      { label: 'High — more than 20% of my monthly income', value: 0 },
+      { label: 'Moderate — roughly 10–20% of my monthly income', value: 1 },
+      { label: 'Low — under 10% of my monthly income', value: 2 },
+      { label: 'Minimal or none', value: 3 }
+    ]
+  },
+  {
+    id: 'business_structure',
+    text: 'How is your self-employment set up?',
+    hint: 'Lenders assess your business structure as part of understanding income reliability. More formal structures with cleaner paperwork — separate accounts, registered businesses, filed accounts — tend to make applications smoother.',
+    options: [
+      { label: 'Informal — cash or unregistered work, no separate accounts', value: 0 },
+      { label: 'Sole trader / sole proprietor — self-assessed tax, basic records', value: 1 },
+      { label: 'Registered business — limited company, Pty Ltd, LLC, or similar', value: 2 },
+      { label: 'Incorporated with payroll — I pay myself a salary from my company', value: 3 },
+      { label: 'Not sure / other', value: 1 }
+    ]
+  },
+  {
+    id: 'paper_trail',
+    text: 'How clean is your financial paper trail?',
+    hint: 'Lenders typically want 2 years of tax returns or filed accounts, recent profit and loss statements, and business bank statements. Missing or irregular documentation is one of the most common reasons self-employed applications are delayed or declined.',
+    options: [
+      { label: 'Messy — late filings, mixed accounts, missing documents', value: 0 },
+      { label: 'Okay — mostly in order but some gaps', value: 1 },
+      { label: 'Good — separate accounts, filed on time', value: 2 },
+      { label: 'Excellent — clean records, accountant-prepared accounts', value: 3 }
+    ]
+  }
+];
+
+let answers = {};
+let currentQ = -1;
+
+function startQuiz() {
+  document.getElementById('start-btn').style.display = 'none';
+  document.getElementById('progress-wrap').classList.add('visible');
+  showQuestion(0);
+}
+
+function showQuestion(index) {
+  currentQ = index;
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+
+  const q = questions[index];
+  const prevAnswer = answers[q.id];
+
+  const card = document.createElement('div');
+  card.className = 'question-card active';
+  card.innerHTML = `
+    <div class="q-number">Question ${index + 1} of ${questions.length}</div>
+    <div class="q-text">${q.text}</div>
+    <div class="q-hint">${q.hint}</div>
+    <div class="options" id="options-${index}">
+      ${q.options.map((opt, i) => `
+        <button class="option-btn ${prevAnswer === i ? 'selected' : ''}"
+          onclick="selectOption(${index}, ${i}, '${q.id}')"
+          data-index="${i}">
+          <span class="option-key">${String.fromCharCode(65+i)}</span>
+          ${opt.label}
+        </button>
+      `).join('')}
+    </div>
+    <div class="q-nav">
+      <button class="btn-next ${prevAnswer !== undefined ? 'enabled' : ''}" id="btn-next" onclick="nextQuestion(${index})">
+        ${index === questions.length - 1 ? 'See My Results →' : 'Next →'}
+      </button>
+      ${index > 0 ? `<button class="btn-back" onclick="showQuestion(${index - 1})">← Back</button>` : ''}
+    </div>
+  `;
+
+  container.appendChild(card);
+  updateProgress(index);
+}
+
+function selectOption(qIndex, optIndex, qId) {
+  answers[qId] = optIndex;
+  document.querySelectorAll(`#options-${qIndex} .option-btn`).forEach((btn, i) => {
+    btn.classList.toggle('selected', i === optIndex);
+  });
+  document.getElementById('btn-next').classList.add('enabled');
+}
+
+function nextQuestion(index) {
+  if (index === questions.length - 1) {
+    showResults();
+  } else {
+    showQuestion(index + 1);
+  }
+}
+
+function updateProgress(index) {
+  const pct = ((index) / questions.length) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-count').textContent = `${index} / ${questions.length}`;
+}
+
+function showResults() {
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('progress-wrap').style.display = 'none';
+
+  // Calculate score — 'unknown' credit score treated as 1 (neutral, triggers check action)
+  let total = 0;
+  const scores = {};
+  const creditRaw = answers['credit_score']; // preserve 'unknown' for action logic
+  questions.forEach(q => {
+    let ans = answers[q.id] ?? 0;
+    if (ans === 'unknown') ans = 1;
+    scores[q.id] = ans;
+    total += ans;
+  });
+
+  const maxScore = questions.length * 3;
+  const pct = total / maxScore;
+
+  // Determine verdict
+  let verdict, headline, summary;
+
+  // Check hard blockers
+  // Unknown credit score is not a hard blocker (score treated as 1) but triggers a priority action
+  const hardBlockers = [];
+  if (scores.income_years < 2) hardBlockers.push('income_years');
+  if (scores.credit_score === 0 && !creditUnknown) hardBlockers.push('credit_score');
+  if (scores.deposit === 0) hardBlockers.push('deposit');
+
+  if (hardBlockers.length >= 2 || (hardBlockers.length >= 1 && pct < 0.45)) {
+    verdict = 'notyet';
+    headline = "Not yet — but there's a clear path.";
+    summary = "You have one or more factors that would likely result in an immediate rejection from most conventional lenders right now. That's not a permanent state — but it means the next 12–24 months should be focused on deliberate preparation, not applications.";
+  } else if (hardBlockers.length === 1 || pct < 0.60) {
+    verdict = 'close';
+    headline = "You're 6–18 months away.";
+    summary = "You have the foundations but one or two factors would make approval difficult today, or limit your options to less competitive rates. With targeted work in the areas flagged below, you could be in a strong position within the next 12–18 months.";
+  } else if (pct >= 0.78) {
+    verdict = 'ready';
+    headline = "You look mortgage-ready.";
+    summary = "Based on your answers, you appear to meet the core criteria most conventional lenders require for self-employed applicants. That doesn't guarantee approval — lenders have their own criteria — but you're in a strong position to apply. Focus on the points below before you do.";
+  } else {
+    verdict = 'close';
+    headline = "Close — a few things to tighten up first.";
+    summary = "You're in reasonable shape, but there are a couple of areas that could undermine your application or push you toward higher rates. Worth addressing these before you approach lenders.";
+  }
+
+  // Build factor assessments
+  const creditUnknown = creditRaw === 'unknown';
+  const factors = [
+    {
+      name: 'Years of self-employment history',
+      score: scores.income_years,
+      verdicts: ['Major blocker — lenders need 2+ years', 'Borderline — 1–2 years is tight', 'Solid — meets the standard', 'Strong — well above the threshold']
+    },
+    {
+      name: 'Income consistency',
+      score: scores.income_consistency,
+      verdicts: ['High risk flag — inconsistency concerns lenders', 'Yellow flag — lenders will scrutinise this', 'Acceptable — stable income profile', 'Excellent — upward trend is ideal']
+    },
+    {
+      name: 'Income direction (trend)',
+      score: scores.income_trending,
+      verdicts: ['Red flag — declining income is a serious concern', 'Caution — small decline may raise questions', 'Fine — flat income is acceptable', 'Positive — growth trend helps your case']
+    },
+    {
+      name: 'Expense claims vs qualifying income',
+      score: scores.write_offs,
+      verdicts: ['High impact — heavy expense claims shrink your qualifying income', 'Moderate impact — this will reduce your borrowing power', 'Low impact — manageable', 'No issue — lenders will see stronger net income']
+    },
+    {
+      name: 'Credit history',
+      score: scores.credit_score,
+      verdicts: ['Significant concern — poor credit limits options considerably', 'Borderline — limited options, likely higher rates', 'Good — qualifies for most mainstream products', 'Excellent — strongest rate tier'],
+      override: creditUnknown ? { text: 'Unknown — check your score before applying', level: 'warn' } : null
+    },
+    {
+      name: 'Deposit size',
+      score: scores.deposit,
+      verdicts: ['Very limited options — under 5% is very difficult', 'Tight — options narrow, rates likely higher', 'Workable — opens up mainstream lender options', 'Strong — 20%+ removes many barriers and improves rates']
+    },
+    {
+      name: 'Existing debt load',
+      score: scores.debt,
+      verdicts: ['High — will significantly cap your mortgage size', 'Moderate — may limit borrowing power', 'Low — good position', 'Minimal — maximum borrowing power']
+    },
+    {
+      name: 'Business structure / formality',
+      score: scores.business_structure,
+      verdicts: ['Serious issue — informal income without documentation is very difficult', 'Basic — workable but may limit lender options', 'Good — standard documentation available', 'Strong — payroll or company records help considerably']
+    },
+    {
+      name: 'Financial documentation quality',
+      score: scores.paper_trail,
+      verdicts: ['Critical gap — clean records are non-negotiable', 'Needs work — gaps will cause friction and delays', 'Good — solid documentation base', 'Excellent — accountant-prepared accounts are ideal']
+    }
+  ];
+
+  const factorVerdicts = factors.map(f => {
+    if (f.override) return { name: f.name, text: f.override.text, level: f.override.level };
+    return {
+      name: f.name,
+      text: f.verdicts[f.score],
+      level: f.score <= 0 ? 'bad' : f.score === 1 ? 'warn' : 'good'
+    };
+  });
+
+  // Action items
+  const actions = [];
+  if (scores.income_years < 2) {
+    actions.push({ priority: true, label: 'Priority', text: 'Most mainstream lenders require at least 2 full years of self-employment history with filed accounts or tax returns. There is rarely a shortcut — some specialist lenders will consider 12 months, but at notably higher rates.' });
+  }
+  if (scores.write_offs <= 1) {
+    actions.push({ priority: true, label: 'High impact', text: 'In the months before applying, consider talking to an accountant about reducing discretionary expense claims. Lenders assess your net income after expenses — a higher net income means a larger mortgage, even if it means a slightly higher tax bill short-term.' });
+  }
+  if (creditUnknown) {
+    actions.push({ priority: true, label: 'Do this first', text: 'You don\'t know your credit score — find out before you apply. Most credit reference agencies offer free checks (Experian, Equifax, TransUnion in most markets). Errors are common and can take weeks to fix. Knowing your score also tells you which lenders are realistic targets.' });
+  } else if (scores.credit_score <= 1) {
+    actions.push({ priority: true, label: 'Priority', text: 'Work on your credit profile before applying. Pay down revolving credit balances, avoid new credit applications, and check your credit report for errors. Even a modest improvement can meaningfully change your rate and available options.' });
+  }
+  if (scores.deposit <= 1) {
+    actions.push({ priority: scores.deposit === 0, label: scores.deposit === 0 ? 'Priority' : 'Important', text: 'A larger deposit significantly improves your options as a self-employed borrower. Aim for at least 10% before applying; 20% or more removes many barriers and typically unlocks considerably better rates.' });
+  }
+  if (scores.paper_trail <= 1) {
+    actions.push({ priority: false, label: 'Important', text: 'Clean up your financial records before applying. Separate business and personal accounts if you haven\'t already, ensure all filings are current, and consider having an accountant prepare your accounts. Lenders typically want 2 years of clean documentation.' });
+  }
+  if (scores.income_consistency <= 1) {
+    actions.push({ priority: false, label: 'Worth noting', text: 'Irregular income makes lenders cautious. If your work can be structured to look more predictable — retainer arrangements, more consistent invoicing — that can help. Evidence of ongoing client relationships also strengthens the case.' });
+  }
+  if (actions.length === 0) {
+    actions.push({ priority: false, label: 'Next step', text: 'Approach a mortgage broker who specialises in self-employed applicants — not a generalist or a bank directly. Specialists know which lenders are more flexible on self-employed income, and can approach multiple lenders without multiple hard searches on your credit file.' });
+  }
+
+  // Render
+  const resultArea = document.getElementById('result-area');
+  resultArea.style.display = 'block';
+  resultArea.innerHTML = `
+    <div class="result-header">
+      <div class="result-eyebrow">Your readiness verdict</div>
+      <div class="verdict-badge ${verdict}">${verdict === 'ready' ? 'Ready to apply' : verdict === 'close' ? 'Almost ready' : 'Not ready yet'}</div>
+      <div class="result-headline ${verdict}">${headline}</div>
+      <p class="result-summary">${summary}</p>
+    </div>
+
+    <div class="breakdown-title">Factor by factor</div>
+    <div class="factor-list">
+      ${factorVerdicts.map(f => `
+        <div class="factor">
+          <span class="factor-name">${f.name}</span>
+          <span class="factor-verdict ${f.level}">${f.level === 'good' ? '✓ OK' : f.level === 'warn' ? '⚠ Watch' : '✗ Issue'}</span>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="actions-section">
+      <div class="actions-title">What to focus on</div>
+      ${actions.map(a => `
+        <div class="action-item ${a.priority ? 'priority' : ''}">
+          <div class="action-label">${a.label}</div>
+          <div class="action-text">${a.text}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <button class="restart-btn" onclick="restartQuiz()">← Retake assessment</button>
+  `;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restartQuiz() {
+  answers = {};
+  currentQ = -1;
+  document.getElementById('result-area').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+  document.getElementById('quiz-area').innerHTML = '<button class="start-btn" id="start-btn" onclick="startQuiz()">Begin Assessment →</button><div id="questions-container"></div>';
+  document.getElementById('progress-wrap').style.display = 'none';
+  document.getElementById('progress-wrap').classList.remove('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

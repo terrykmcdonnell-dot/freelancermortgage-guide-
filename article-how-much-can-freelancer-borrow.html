@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Much Can a Freelancer Actually Borrow? | FreelancerMortgage.guide</title>
+<meta name="description" content="The question every self-employed person asks before approaching a lender. How mortgage borrowing limits are calculated for freelancers, what reduces them, and what you can realistically expect.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@400;500&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #111318;
+    --surface: #181b22;
+    --surface2: #1e2230;
+    --border: #252a38;
+    --border-mid: #303548;
+    --text: #e4e8f4;
+    --text-muted: #8890a8;
+    --text-dim: #40485a;
+    --accent: #6b9fff;
+    --accent-dim: #0c1428;
+    --accent-mid: #1a2848;
+    --gold: #e8c060;
+    --gold-dim: #201808;
+    --green: #50c080;
+    --green-dim: #082018;
+    --red: #e06868;
+    --red-dim: #200808;
+    --col-width: 680px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* star field bg */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.08) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.05) 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.06) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 20%, rgba(255,255,255,0.04) 0%, transparent 100%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .z1 { position: relative; z-index: 1; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(17,19,24,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-cta { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid var(--accent-mid); padding: 6px 14px; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent-dim); }
+
+  .article-hero { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 80px 32px 60px; border-bottom: 1px solid var(--border); }
+  .hero-meta { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-mid); padding: 4px 10px; }
+  .hero-read-time { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+
+  .article-title { font-family: 'Fraunces', serif; font-size: clamp(34px, 5.5vw, 58px); line-height: 1.08; letter-spacing: -0.02em; color: var(--text); max-width: 820px; margin-bottom: 24px; font-weight: 900; }
+  .article-title em { font-style: italic; color: var(--accent); font-weight: 700; }
+
+  .article-deck { font-size: 18px; color: var(--text-muted); max-width: 580px; line-height: 1.65; margin-bottom: 36px; font-weight: 300; }
+  .hero-byline { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.06em; }
+
+  .article-layout { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 220px 1fr; gap: 80px; align-items: start; }
+
+  .toc { position: sticky; top: 72px; padding: 40px 0; }
+  .toc-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+  .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .toc-list a { display: block; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); text-decoration: none; padding: 6px 0 6px 12px; border-left: 1px solid var(--border); transition: color 0.15s, border-color 0.15s; line-height: 1.4; }
+  .toc-list a:hover { color: var(--text); border-left-color: var(--accent); }
+
+  .article-body { padding: 48px 0 100px; max-width: var(--col-width); }
+
+  .article-lede { font-size: 20px; line-height: 1.7; color: var(--text); margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); font-weight: 300; }
+
+  .article-body p { margin-bottom: 24px; color: var(--text-muted); font-weight: 300; }
+  .article-body p strong { color: var(--text); font-weight: 700; }
+
+  .article-body h2 { font-family: 'Fraunces', serif; font-size: 28px; line-height: 1.2; color: var(--text); margin: 56px 0 18px; font-weight: 700; }
+
+  .pull-quote { border-left: 3px solid var(--accent); padding: 4px 0 4px 24px; margin: 40px 0; }
+  .pull-quote p { font-family: 'Fraunces', serif; font-size: 22px; line-height: 1.4; color: var(--text); font-style: italic; margin-bottom: 0 !important; font-weight: 700; }
+
+  .callout { border: 1px solid var(--border); padding: 22px 26px; margin: 36px 0; }
+  .callout-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+  .callout.warning { background: var(--gold-dim); border-color: #3a2c10; }
+  .callout.warning .callout-label { color: var(--gold); }
+  .callout.tip { background: var(--green-dim); border-color: #103020; }
+  .callout.tip .callout-label { color: var(--green); }
+  .callout.info { background: var(--accent-dim); border-color: var(--accent-mid); }
+  .callout.info .callout-label { color: var(--accent); }
+  .callout p { font-size: 15px; margin-bottom: 0 !important; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+  .callout p + p { margin-top: 10px !important; }
+
+  /* The big calculator visual */
+  .borrow-calc { margin: 40px 0; background: var(--surface); border: 1px solid var(--border); }
+
+  .bc-header { background: var(--surface2); padding: 16px 24px; border-bottom: 1px solid var(--border); }
+  .bc-title { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+
+  .bc-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid var(--border); gap: 16px; }
+  .bc-row:last-child { border-bottom: none; }
+  .bc-row.total { background: var(--accent-dim); }
+  .bc-row.deduct { background: var(--red-dim); }
+
+  .bc-label { font-size: 14px; color: var(--text-muted); font-weight: 300; }
+  .bc-val { font-family: 'DM Mono', monospace; font-size: 15px; white-space: nowrap; }
+  .bc-val.neutral { color: var(--text); }
+  .bc-val.pos { color: var(--green); }
+  .bc-val.neg { color: var(--red); }
+  .bc-val.result { color: var(--accent); font-size: 20px; }
+  .bc-val.gold { color: var(--gold); font-size: 20px; }
+
+  /* Scenario comparison */
+  .scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-mid); margin: 40px 0; }
+  .scenario { background: var(--surface); padding: 28px; }
+  .sc-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+  .sc-label.a { color: var(--gold); }
+  .sc-label.b { color: var(--accent); }
+  .sc-amount { font-family: 'Fraunces', serif; font-size: 42px; line-height: 1; margin-bottom: 8px; font-weight: 900; }
+  .sc-amount.a { color: var(--gold); }
+  .sc-amount.b { color: var(--accent); }
+  .sc-detail { font-size: 13px; color: var(--text-muted); line-height: 1.55; font-weight: 300; }
+
+  /* Multiplier box */
+  .multiplier-box { background: var(--surface); border: 1px solid var(--border-mid); padding: 28px; margin: 36px 0; display: flex; align-items: center; gap: 32px; }
+  .mb-num { font-family: 'Fraunces', serif; font-size: 72px; color: var(--accent); line-height: 1; font-weight: 900; flex-shrink: 0; }
+  .mb-text { }
+  .mb-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .mb-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+  .task-list { list-style: none; margin: 16px 0 24px; }
+  .task-list li { font-size: 15px; color: var(--text-muted); padding: 9px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; font-weight: 300; }
+  .task-list li:last-child { border-bottom: none; }
+  .task-list li::before { content: '→'; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+
+  .tool-cta { background: var(--accent-dim); border: 1px solid var(--accent-mid); padding: 32px; margin: 48px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .tool-cta-title { font-family: 'Fraunces', serif; font-size: 22px; color: var(--text); margin-bottom: 6px; font-weight: 700; }
+  .tool-cta-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 0 !important; font-weight: 300; }
+  .tool-cta-btn { background: var(--accent); color: #111318; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 14px; padding: 12px 24px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: opacity 0.2s; }
+  .tool-cta-btn:hover { opacity: 0.88; }
+
+  .related { border-top: 1px solid var(--border); margin-top: 80px; padding-top: 48px; }
+  .related-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 24px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); }
+  .related-card { background: var(--bg); padding: 24px; text-decoration: none; transition: background 0.2s; display: block; }
+  .related-card:hover { background: var(--surface); }
+  .related-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
+  .related-title { font-family: 'Fraunces', serif; font-size: 17px; color: var(--text); line-height: 1.3; font-weight: 700; }
+
+  footer { border-top: 1px solid var(--border); position: relative; z-index: 1; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-note { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.05em; }
+
+  @media (max-width: 800px) {
+    .article-layout { grid-template-columns: 1fr; gap: 0; }
+    .toc { display: none; }
+    .article-hero, .article-layout { padding-left: 20px; padding-right: 20px; }
+    .related-grid, .scenarios { grid-template-columns: 1fr; }
+    .multiplier-box { flex-direction: column; gap: 16px; }
+    .mb-num { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="z1">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Freelancer<span>Mortgage</span>.guide</a>
+    <a class="nav-cta" href="freelancer-mortgage-readiness.html">Free assessment →</a>
+  </div>
+</nav>
+
+<header class="article-hero z1">
+  <div class="hero-meta">
+    <span class="hero-tag">Borrowing</span>
+    <span class="hero-read-time">10 min read</span>
+  </div>
+  <h1 class="article-title">How Much Can a Freelancer <em>Actually</em> Borrow?</h1>
+  <p class="article-deck">The question everyone asks before approaching a lender. How borrowing limits are calculated for self-employed applicants, what reduces them, and what you can realistically expect.</p>
+  <div class="hero-byline">FreelancerMortgage.guide &nbsp;·&nbsp; Updated 2025</div>
+</header>
+
+<div class="article-layout z1">
+  <aside class="toc">
+    <div class="toc-label">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#the-gap">The gap between expectation and reality</a></li>
+      <li><a href="#the-formula">How lenders calculate the limit</a></li>
+      <li><a href="#worked-example">A worked example</a></li>
+      <li><a href="#what-reduces-it">What reduces your limit</a></li>
+      <li><a href="#what-increases-it">What increases your limit</a></li>
+      <li><a href="#deposit-effect">The deposit effect</a></li>
+      <li><a href="#improving-your-number">Improving your number</a></li>
+    </ul>
+  </aside>
+
+  <article class="article-body">
+
+    <p class="article-lede">Most freelancers approach their first mortgage conversation expecting something close to what a salaried peer earning the same gross amount would get. The reality is usually lower — sometimes significantly. Understanding why, and by how much, is the first step to either improving the number or adjusting expectations.</p>
+
+    <p>This article explains the mechanics of how mortgage borrowing limits are calculated for self-employed applicants, with real numbers and the specific factors that move the dial in either direction.</p>
+
+    <h2 id="the-gap">The gap between expectation and reality</h2>
+
+    <p>A salaried employee earning £60,000 or $80,000 a year might reasonably expect to borrow 4–5 times their salary — a fairly predictable range based on income alone. For a freelancer with the same gross earnings, the calculation is more complicated and the result is usually lower.</p>
+
+    <p>Three things cause this:</p>
+
+    <ul class="task-list">
+      <li><strong>Net income, not gross.</strong> Lenders use your income after business expenses and tax adjustments — not your revenue or gross earnings. Significant expense claims reduce this figure directly.</li>
+      <li><strong>Two-year averaging.</strong> Lenders average your income across two years of filed accounts or tax returns. A single strong year doesn't count fully if the previous year was weaker.</li>
+      <li><strong>Conservative income multiples.</strong> Some lenders apply lower income multiples to self-employed applicants than salaried ones, reflecting the perceived higher risk of variable income.</li>
+    </ul>
+
+    <div class="pull-quote">
+      <p>"The number a lender will lend you is calculated from an income figure that may be considerably lower than the income you think you have."</p>
+    </div>
+
+    <h2 id="the-formula">How lenders calculate the borrowing limit</h2>
+
+    <p>The calculation has two stages: first, arrive at your qualifying income; second, apply an income multiple to get the maximum loan.</p>
+
+    <p><strong>Stage 1 — Qualifying income:</strong> Starting from your net profit (after expenses), lenders add back non-cash deductions like depreciation, subtract the employer portion of self-employment tax, and average across two years. The result is your monthly qualifying income.</p>
+
+    <p><strong>Stage 2 — Income multiple:</strong> Most mainstream lenders will offer between 4 and 4.5 times annual qualifying income. Some will go to 5x for strong applications (high income, large deposit, clean credit). Very few will go above 5x for self-employed applicants.</p>
+
+    <div class="multiplier-box">
+      <div class="mb-num">4–5×</div>
+      <div class="mb-text">
+        <div class="mb-title">The income multiple range</div>
+        <div class="mb-desc">Most lenders offer 4–4.5× annual qualifying income for self-employed applicants. 5× is available from some lenders with strong applications. The qualifying income figure is almost always lower than gross revenue — the multiple is applied to a smaller number than most freelancers expect.</div>
+      </div>
+    </div>
+
+    <h2 id="worked-example">A worked example</h2>
+
+    <p>Let's take a freelance consultant with £80,000 in gross revenue, moderate business expenses, and two years of consistent filed accounts.</p>
+
+    <div class="borrow-calc">
+      <div class="bc-header"><span class="bc-title">Borrowing limit calculation — worked example</span></div>
+      <div class="bc-row">
+        <span class="bc-label">Gross revenue (Year 1)</span>
+        <span class="bc-val neutral">£80,000</span>
+      </div>
+      <div class="bc-row deduct">
+        <span class="bc-label">Business expenses claimed</span>
+        <span class="bc-val neg">− £22,000</span>
+      </div>
+      <div class="bc-row">
+        <span class="bc-label">Net profit (Schedule C / SA return)</span>
+        <span class="bc-val neutral">£58,000</span>
+      </div>
+      <div class="bc-row">
+        <span class="bc-label">Add back: depreciation</span>
+        <span class="bc-val pos">+ £1,800</span>
+      </div>
+      <div class="bc-row deduct">
+        <span class="bc-label">Subtract: SE tax / NI adjustment</span>
+        <span class="bc-val neg">− £3,200</span>
+      </div>
+      <div class="bc-row total">
+        <span class="bc-label" style="color:var(--text); font-weight:700;">Year 1 qualifying income</span>
+        <span class="bc-val result">£56,600</span>
+      </div>
+      <div class="bc-row">
+        <span class="bc-label">Year 2 qualifying income (slightly lower year)</span>
+        <span class="bc-val neutral">£51,400</span>
+      </div>
+      <div class="bc-row total">
+        <span class="bc-label" style="color:var(--text); font-weight:700;">Two-year average qualifying income</span>
+        <span class="bc-val result">£54,000</span>
+      </div>
+      <div class="bc-row" style="background: var(--green-dim); border-color: #103020;">
+        <span class="bc-label" style="color:var(--text); font-weight:700;">Maximum borrowing at 4.5× = </span>
+        <span class="bc-val gold">£243,000</span>
+      </div>
+    </div>
+
+    <p>From £80,000 gross revenue to a maximum loan of £243,000. Now compare that to the same person's salaried peer:</p>
+
+    <div class="scenarios">
+      <div class="scenario">
+        <div class="sc-label a">Freelancer — same gross earnings</div>
+        <div class="sc-amount a">£243k</div>
+        <div class="sc-detail">Based on two-year average qualifying income of £54,000 after expenses, adjustments, and averaging. At 4.5× income multiple.</div>
+      </div>
+      <div class="scenario">
+        <div class="sc-label b">Salaried employee — same gross salary</div>
+        <div class="sc-amount b">£360k</div>
+        <div class="sc-detail">Based on gross salary of £80,000 used directly. No deductions, no averaging. At 4.5× income multiple.</div>
+      </div>
+    </div>
+
+    <p>A £117,000 gap — on the same gross earnings. That gap is the combined effect of expenses reducing qualifying income, the two-year average pulling it lower, and no add-backs for non-cash items that weren't claimed.</p>
+
+    <h2 id="what-reduces-it">What reduces your borrowing limit</h2>
+
+    <ul class="task-list">
+      <li><strong>High expense claims.</strong> Every pound or dollar you deduct reduces your qualifying income — and the borrowing multiple is applied to that reduced figure. The effect is amplified: £10,000 in deductions reduces borrowing by £40,000–£50,000 at a 4.5× multiple.</li>
+      <li><strong>Income decline year-on-year.</strong> If your most recent year is significantly lower than the previous year, many lenders use only the lower figure rather than the average. A declining trend can be more damaging than a consistently lower income.</li>
+      <li><strong>Existing debt commitments.</strong> Car loans, personal loans, credit card minimums — all monthly debt obligations are subtracted from your available income before the multiple is applied. High debt load directly reduces how much mortgage you can carry.</li>
+      <li><strong>Lower credit score.</strong> A weaker credit profile may push you toward lenders who apply more conservative income multiples, or toward specialist products with different terms.</li>
+      <li><strong>Less than two years' trading history.</strong> Many mainstream lenders won't consider applications with under two years of filed accounts. Those that will often apply more conservative multiples to compensate for the shorter track record.</li>
+    </ul>
+
+    <h2 id="what-increases-it">What increases your borrowing limit</h2>
+
+    <ul class="task-list">
+      <li><strong>Higher qualifying income.</strong> Either through growing your business, or through reducing discretionary expense claims in the year before applying. The latter is a deliberate trade-off — more tax now, more mortgage available.</li>
+      <li><strong>Growing income trend.</strong> If your income has increased year-on-year, some lenders will weight the calculation toward the more recent year rather than using a simple average. A clear upward trajectory is one of the best signals you can present.</li>
+      <li><strong>Large deposit.</strong> A bigger deposit reduces the loan-to-value ratio, which reduces lender risk, which sometimes allows access to higher income multiples or more flexible underwriting.</li>
+      <li><strong>Clean credit history.</strong> Strong credit opens access to more lenders — including those with higher income multiples and more favourable terms.</li>
+      <li><strong>Low existing debt.</strong> Reducing or eliminating other monthly debt commitments increases the amount of your income available for mortgage servicing.</li>
+      <li><strong>Specialist lender.</strong> Some lenders who focus on self-employed borrowers apply higher multiples than mainstream banks for well-qualified applicants. A specialist mortgage broker knows which lenders these are.</li>
+    </ul>
+
+    <h2 id="deposit-effect">The deposit effect</h2>
+
+    <p>Deposit size affects your borrowing limit in two ways that are worth understanding separately.</p>
+
+    <p><strong>Directly:</strong> A larger deposit means you need to borrow less. If the property you want costs £350,000 and you have a 25% deposit (£87,500), you need a £262,500 mortgage. With a 10% deposit (£35,000), you need £315,000. The gap may or may not be within your qualifying range — but the deposit directly changes what you need to borrow.</p>
+
+    <p><strong>Indirectly:</strong> A larger deposit also improves your loan-to-value ratio, which changes which lenders and products you can access. At 75% LTV (25% deposit), you have access to almost all mainstream products. At 90% LTV (10% deposit), your options narrow significantly for self-employed applicants specifically.</p>
+
+    <div class="callout info">
+      <div class="callout-label">The 20% threshold</div>
+      <p>For self-employed borrowers specifically, 20% deposit is a meaningful threshold. It typically opens access to the widest range of lenders, removes private mortgage insurance requirements (in markets where that applies), and signals financial stability. If you're between 15% and 20%, it's often worth waiting to save the additional amount.</p>
+    </div>
+
+    <h2 id="improving-your-number">Improving your number before you apply</h2>
+
+    <p>The borrowing limit isn't fixed — it's a function of variables you can influence over 12–24 months. The most impactful levers:</p>
+
+    <ul class="task-list">
+      <li><strong>Model your qualifying income now.</strong> Use the formula above to calculate what a lender would actually see from your current returns. Know the number before any lender does.</li>
+      <li><strong>Talk to an accountant about expense claims.</strong> In the year or two before applying, consider reducing discretionary expense claims to increase your qualifying income. The tax cost is often less than the lost borrowing power.</li>
+      <li><strong>Pay down existing debt.</strong> Reducing monthly debt commitments directly increases the mortgage you can service — and improves the picture your credit file presents.</li>
+      <li><strong>Save a larger deposit.</strong> Even moving from 10% to 15% opens up more lenders and better terms. 20% is the target for maximum options.</li>
+      <li><strong>Use a specialist broker.</strong> A broker who works regularly with self-employed applicants knows which lenders apply higher multiples, are more flexible on income assessment, and will present your file in the strongest possible light.</li>
+    </ul>
+
+    <div class="callout tip">
+      <div class="callout-label">The honest answer to "how much can I borrow?"</div>
+      <p>You won't get a reliable answer without running the actual calculation on your specific figures. But as a rough guide: take your net profit from your most recent tax return, average it with the previous year, and multiply by 4. That gives you a conservative estimate of what most mainstream lenders will offer. It will almost certainly be lower than you expect — and now you know exactly what to do about it.</p>
+    </div>
+
+    <div class="tool-cta">
+      <div>
+        <div class="tool-cta-title">Find out where you stand before talking to a lender</div>
+        <p class="tool-cta-desc">The free readiness assessment covers income, expenses, credit, and deposit — and gives you an honest verdict on your current position.</p>
+      </div>
+      <a class="tool-cta-btn" href="freelancer-mortgage-readiness.html">Take the assessment →</a>
+    </div>
+
+    <div class="related">
+      <div class="related-label">Read next</div>
+      <div class="related-grid">
+        <a class="related-card" href="article-how-lenders-calculate-income.html">
+          <div class="related-tag">Income</div>
+          <div class="related-title">How Lenders Actually Calculate Freelance Income</div>
+        </a>
+        <a class="related-card" href="article-write-offs-mortgage.html">
+          <div class="related-tag">Tax Strategy</div>
+          <div class="related-title">Why Writing Off Expenses Can Cost You a Mortgage</div>
+        </a>
+        <a class="related-card" href="article-credit-score-freelancer.html">
+          <div class="related-tag">Credit</div>
+          <div class="related-title">How to Improve Your Credit Score as a Freelancer</div>
+        </a>
+      </div>
+    </div>
+
+  </article>
+</div>
+
+<footer class="z1">
+  <div class="footer-inner">
+    <span class="footer-note">Not financial advice. For informational purposes only.</span>
+    <span class="footer-note">© 2025 FreelancerMortgage.guide</span>
+  </div>
+</footer>
+
+</body>
+</html>

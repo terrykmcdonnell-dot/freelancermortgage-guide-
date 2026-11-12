@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | FreelancerMortgage.guide</title>
+<meta name="description" content="FreelancerMortgage.guide is an independent resource for self-employed workers navigating the mortgage process. No lender affiliations. No agenda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #141414;
+    --border: #242424;
+    --text: #e8e4dc;
+    --text-muted: #8a8480;
+    --text-dim: #484440;
+    --accent: #d4a853;
+    --accent-dim: #2a2010;
+    --accent-mid: #3d2e14;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.72;
+  }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.55;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(14,14,14,0.94); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-cta { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid var(--accent-mid); padding: 6px 14px; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent-dim); }
+
+  .page-wrap {
+    position: relative; z-index: 1;
+    max-width: 720px; margin: 0 auto;
+    padding: 72px 40px 120px;
+  }
+
+  .page-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+
+  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 4vw, 44px); line-height: 1.12; letter-spacing: -0.02em; color: var(--text); margin-bottom: 32px; }
+
+  .lede { font-size: 19px; color: var(--text); line-height: 1.7; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+  h2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); margin: 48px 0 14px; }
+
+  p { color: var(--text-muted); margin-bottom: 20px; font-size: 16px; line-height: 1.72; }
+  p strong { color: var(--text); font-weight: 600; }
+
+  .principle { border-left: 2px solid var(--accent); padding-left: 20px; margin: 24px 0; }
+  .principle-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .principle-text { font-size: 15px; color: var(--text-muted); line-height: 1.65; }
+
+  .cta-box { background: var(--surface); border: 1px solid var(--border); padding: 28px; margin-top: 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .cta-box-text h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); margin-bottom: 6px; }
+  .cta-box-text p { font-size: 14px; margin-bottom: 0; }
+  .cta-btn { background: var(--accent); color: #0e0e0e; font-family: 'Instrument Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 11px 24px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; }
+  .cta-btn:hover { opacity: 0.88; }
+
+  footer { border-top: 1px solid var(--border); position: relative; z-index: 1; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-note { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.05em; }
+
+  @media (max-width: 600px) { .page-wrap { padding: 48px 20px 80px; } .nav-inner { padding: 0 20px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Freelancer<span>Mortgage</span>.guide</a>
+    <a class="nav-cta" href="freelancer-mortgage-readiness.html">Free assessment →</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="page-eyebrow">About this site</div>
+  <h1>What this is and why it exists</h1>
+
+  <p class="lede">FreelancerMortgage.guide is an independent resource for self-employed workers, freelancers, and contractors navigating the mortgage process. It has no affiliation with any lender, broker, or financial institution.</p>
+
+  <h2>The problem we're trying to solve</h2>
+
+  <p>Search for "freelancer mortgage" and you'll find pages of results — helpful-sounding guides, explainers, calculators, checklists. Almost all of them are written by mortgage lenders or brokers. Almost all of them end with a contact form, a rate quote button, or a call to action to speak with their loan officers.</p>
+
+  <p>There is nothing wrong with that. Lenders need to market their services. But it means the information available to freelancers trying to understand their situation is filtered through a commercial lens. The goal of the person writing is to get you to apply — not necessarily to tell you whether you should.</p>
+
+  <p><strong>This site exists to fill that gap.</strong> An honest, independent assessment of what lenders actually look for, what makes self-employed applications harder, and what you can genuinely do to improve your position.</p>
+
+  <h2>What we believe</h2>
+
+  <div class="principle">
+    <div class="principle-label">Honesty over helpfulness theatre</div>
+    <div class="principle-text">It's more useful to tell someone they're not ready yet — and explain specifically why — than to give them generic advice that makes them feel informed without actually helping them.</div>
+  </div>
+
+  <div class="principle">
+    <div class="principle-label">No hidden agenda</div>
+    <div class="principle-text">This site displays advertising. Advertisers do not influence the content. A mortgage lender advertising here does not constitute an endorsement. The articles say what they say regardless of who's buying ads.</div>
+  </div>
+
+  <div class="principle">
+    <div class="principle-label">No data collection</div>
+    <div class="principle-text">The readiness assessment runs entirely in your browser. Your answers are never stored, transmitted, or associated with any identifying information. When you close the tab, they're gone.</div>
+  </div>
+
+  <div class="principle">
+    <div class="principle-label">Independent of the market it covers</div>
+    <div class="principle-text">We have no referral relationships with brokers, no affiliate arrangements with lenders, and no financial stake in whether you apply for a mortgage or not.</div>
+  </div>
+
+  <h2>A note on the content</h2>
+
+  <p>The articles on this site are written to be as accurate and useful as possible, but they are <strong>not financial or legal advice</strong>. Mortgage lending rules vary by country, lender, and individual circumstance. Always verify information with a qualified professional before making financial decisions.</p>
+
+  <p>The readiness assessment produces a verdict based on the factors you provide. It cannot account for every lender's specific criteria, and its verdict should be treated as a starting point for thinking, not a guarantee of any outcome.</p>
+
+  <div class="cta-box">
+    <div class="cta-box-text">
+      <h3>Take the free readiness assessment</h3>
+      <p>9 questions. An honest verdict. No data collected.</p>
+    </div>
+    <a class="cta-btn" href="freelancer-mortgage-readiness.html">Start →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-note">© 2025 FreelancerMortgage.guide · Not financial advice</span>
+    <span class="footer-note">Independent · No lender affiliations</span>
+  </div>
+</footer>
+
+</body>
+</html>

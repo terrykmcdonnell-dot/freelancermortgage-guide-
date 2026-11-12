@@ -1,0 +1,21 @@
+# Canonical redirects — force all variants to https non-www
+http://www.freelancermortgage.guide/* https://freelancermortgage.guide/:splat 301!
+https://www.freelancermortgage.guide/* https://freelancermortgage.guide/:splat 301!
+http://freelancermortgage.guide/* https://freelancermortgage.guide/:splat 301!
+
+# Serve files from mortgageguide subfolder
+/robots.txt /mortgageguide/robots.txt 200
+/sitemap.xml /mortgageguide/sitemap.xml 200
+/ /mortgageguide/index.html 200
+/index.html /mortgageguide/index.html 200
+/freelancer-mortgage-readiness.html /mortgageguide/freelancer-mortgage-readiness.html 200
+/article-write-offs-mortgage.html /mortgageguide/article-write-offs-mortgage.html 200
+/article-how-lenders-calculate-income.html /mortgageguide/article-how-lenders-calculate-income.html 200
+/article-12-month-plan.html /mortgageguide/article-12-month-plan.html 200
+/article-bank-statement-loans.html /mortgageguide/article-bank-statement-loans.html 200
+/article-credit-score-freelancer.html /mortgageguide/article-credit-score-freelancer.html 200
+/article-how-much-can-freelancer-borrow.html /mortgageguide/article-how-much-can-freelancer-borrow.html 200
+/article-buy-or-rent-freelancer.html /mortgageguide/article-buy-or-rent-freelancer.html 200
+/privacy.html /mortgageguide/privacy.html 200
+/about.html /mortgageguide/about.html 200
+/contact.html /mortgageguide/contact.html 200
